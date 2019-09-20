@@ -3,7 +3,7 @@ import { ScrollView, SafeAreaView, View, StyleSheet } from 'react-native';
 import Layout from '../../constants/Layout';
 import PostScrollViewCell from './PostScrollViewCell';
 import Header from './Header';
-// import { _postService } from '../../services/firestore';
+import { _postService } from '../../services/firestore';
 import { Post } from '../../Models/Post';
 
 
@@ -88,13 +88,17 @@ export class HomeScrollView extends Component {
             onScrollEndDrag={this.handleDragEnd.bind(this)}
             onMomentumScrollBegin={this.handleScrollStart.bind(this)}
             onMomentumScrollEnd={this.handleScrollEnd.bind(this)}
-            >
+          >
             {posts.map((post, i) =>
               <PostScrollViewCell
-              key={i}
-              post={post}
+                key={i}
+                post={post}
               />
-              )}
+            )}
+            <PostScrollViewCell
+              key={posts.length}
+              post={{text: 'this is probably cut off at the bottom'}}
+            />
           </ScrollView>
         </SafeAreaView>
       </View>
