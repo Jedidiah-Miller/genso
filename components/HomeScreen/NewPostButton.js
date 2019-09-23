@@ -1,18 +1,15 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Button, Icon } from 'native-base';
-import { Theme } from '../Styles/Theme'
 
-export default function IconButton(props) {
 
-  const { cb, imgSrc } = props
-
+export default function NewPostButton(props) {
   return (
     <Button
       style={styles.button}
-      cb={() => cb()}
+      onPress={() => props.handleNewPostTap()}
     >
-      <Icon name="home" />
+      <Icon name="add" />
     </Button>
   )
 }
@@ -20,7 +17,6 @@ export default function IconButton(props) {
 const styles = StyleSheet.create({
   button: {
     width: 44,
-    height: 44,
-    // color: Theme.colors.primaryColor
+    height: 44
   }
 })

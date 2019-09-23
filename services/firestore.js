@@ -4,7 +4,7 @@ import firebase, { firestore } from 'firebase';
  * ## Firestore Service
  * firestore crud operations for specified collection path
  */
-class FirestoreService {
+export class FirestoreService {
   /**
    * initialize the class with a collection name
    * @param {String} collectionName specified name for firestore collection
@@ -25,11 +25,22 @@ class FirestoreService {
     }
   }
   /**
+   * get all documents from the firestore collection
+   */
+  async getAll() {
+    try {
+      const docs = await this.collection.get();
+      return docs
+    } catch (e) {
+      this.handleError(e);
+    }
+  }
+  /**
    * get the specified document from firestore
    * @param {String} id firestore document id
    * @returns {firestore.DocumentSnapshot}
    */
-  async get(id) {
+  async getOne(id) {
     try {
       const doc = await this.collection.doc(id).get();
       return doc;
@@ -74,4 +85,4 @@ class FirestoreService {
  * ## Post Service
  * post crud operations
  */
-export const _postService = new FirestoreService('Posts');
+// export const _postService = new FirestoreService('Posts');

@@ -1,16 +1,18 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import PostButton from '../IconButton';
+import { Button, Icon } from 'native-base';
 import { Theme } from '../../Styles/Theme';
 
 const Header = (props) => {
   const { handleNewPostTap } = props;
   return (
     <View style={styles.header}>
-      <PostButton
+      <Button
         style={styles.postButton}
-        cb={handleNewPostTap}
-      />
+        onPress={() => handleNewPostTap()}
+      >
+        <Icon name="add" />
+      </Button>
     </View>
   )
 }
